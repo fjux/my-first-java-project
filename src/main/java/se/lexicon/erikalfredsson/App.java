@@ -1,10 +1,12 @@
 package se.lexicon.erikalfredsson;
 
 import java.util.Scanner;
-import java.util.ArrayList;
+
 
 public class App 
 {
+
+
     public static void main( String[] args ) {
         exercise1();
         exercise2();
@@ -13,9 +15,9 @@ public class App
         exercise5();
         exercise6();
         exercise7();
-        exercise3A();
-        exercise3AL();
+        exercise8();
     }
+
     public static void exercise1(){
         System.out.println("Hello");
         System.out.println("Erik!");
@@ -30,10 +32,7 @@ public class App
         boolean leap;
         if (year % 4 == 0) {
             if (year % 100 == 0) {
-                if (year % 400 == 0)
-                    leap = true;
-                else
-                    leap = false;
+                leap = year % 400 == 0;
             } else
                 leap = true;
         } else
@@ -102,10 +101,10 @@ public class App
 
         number2 = input.nextInt();
 
-            result1 = number1 + number2;
-            result2 = number1 - number2;
-            result3 = number1 * number2;
-            result4 = number1 / number2;
+        result1 = number1 + number2;
+        result2 = number1 - number2;
+        result3 = number1 * number2;
+        result4 = number1 / number2;
 
         System.out.println(number1 + " + " + number2 + " = " + result1);
         System.out.println(number1 + " - " + number2 + " = " + result2);
@@ -122,54 +121,35 @@ public class App
        input %= 60;
        int seconds = input;
 
-        System.out.println(hours + ":" + minutes + ":" + seconds);
+       System.out.println(hours + ":" + minutes + ":" + seconds);
     }
-    public static void exercise3A(){
-        int[] numbers = {45, 11, 12, 4, 24, 6, 55, 12};
-        int result1 = numbers[0] + numbers[1];
-        System.out.println(numbers[0] + " + " + numbers[1] + " = " + result1);
 
-        int result2 = numbers[2] - numbers[3];
-        System.out.println(numbers[2] + " - " + numbers[3] + " = " + result2);
+    public static void exercise8() {
+        int secretNumber;
+        secretNumber = (int) (Math.random() * 499 + 1);
+        Scanner input = new Scanner(System.in);
+        int guess;
+        int numberOfGuesses = 0;
 
-        int result3 = numbers[4] * numbers[5];
-        System.out.println(numbers[4] + " * " + numbers[5] + " = " + result3);
+        do {
+            System.out.println("Enter a guess: ");
+            guess = input.nextInt();
+            numberOfGuesses++;
+            System.out.println("Your guess is " + guess);
+            System.out.println(numberOfGuesses + " out of 10 guesses.");
 
-        int result4 = numbers[6] / numbers[7];
-        System.out.println(numbers[6] + " / " + numbers[7] + " = " + result4);
-
-
-    }
-    public static void exercise3AL() {
-   ArrayList<Integer> numbers = new ArrayList<>();
-   numbers.add(45);
-   numbers.add(11);
-   numbers.add(12);
-   numbers.add(4);
-   numbers.add(24);
-   numbers.add(6);
-   numbers.add(55);
-   numbers.add(12);
-
-
-
-        int result1 = numbers.get(0) + numbers.get(1);
-        System.out.println(numbers.get(0) + " + " + numbers.get(1) + " = " + result1);
-
-        int result2 = numbers.get(2) - numbers.get(3);
-        System.out.println(numbers.get(2) + " - " + numbers.get(3) + " = " + result2);
-
-        int result3 = numbers.get(4) * numbers.get(5);
-        System.out.println(numbers.get(4) + " * " + numbers.get(5) + " = " + result3);
-
-        int result4 = numbers.get(6) / numbers.get(7);
-        System.out.println(numbers.get(6) + " / " + numbers.get(7) + " = " + result4);
-
-
-        numbers.add(67);
-        int result5 = numbers.get(8) + numbers.get(8);
-        System.out.println(numbers.get(8) + " + " + numbers.get(8) + " = " + result5);
+            if (guess == secretNumber) {
+                System.out.println("Congratulations!");
+                System.out.println("You guessed the right number!");
+            }
+            if (guess < secretNumber) {
+                System.out.println("Go higher!");
+            }
+            if (guess > secretNumber) {
+                System.out.println("Go lower!");
+            }
+        } while ((guess != secretNumber) & (numberOfGuesses <= 10));
+        System.out.println("Sorry, you didn't find the number!");
     }
 }
-
 
