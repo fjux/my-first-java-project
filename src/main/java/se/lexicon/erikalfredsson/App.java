@@ -136,7 +136,7 @@ public class App
             guess = input.nextInt();
             numberOfGuesses++;
             System.out.println("Your guess is " + guess);
-            System.out.println(numberOfGuesses + " out of 10 guesses.");
+            System.out.println( "Number of guesses: " + numberOfGuesses);
 
             if (guess == secretNumber) {
                 System.out.println("Congratulations!");
@@ -148,8 +148,7 @@ public class App
             if (guess > secretNumber) {
                 System.out.println("Go lower!");
             }
-        } while ((guess != secretNumber) & (numberOfGuesses <= 10));
-        System.out.println("Sorry, you didn't find the number!");
+        } while (guess != secretNumber);
     }
 }
 
